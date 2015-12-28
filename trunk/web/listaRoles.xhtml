@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view>
+        <h:head>
+            <title></title>
+        </h:head>
+        <h:body>
+            <h:form id="form">
+                <p:dataTable id="tablaRoles" var="rol" value="#{rolMB.listaRoles}">
+
+                    <p:column headerText="Código" style="width:24%">
+                        <h:outputText value="#{rol.rolCodigo}" />
+                    </p:column>
+
+                    <p:column headerText="Descripción" style="width:24%">
+                        <h:outputText value="#{rol.rolDescripcion}" />
+                    </p:column>
+
+                    <p:column headerText="Fecha de creación" style="width:24%">
+                        <h:outputText value="#{rol.rolFechaCreacion}" />
+                    </p:column>
+
+                    <p:column headerText="Fecha de modificación" style="width:24%">
+                        <h:outputText value="#{rol.rolFechaActualizacion}" />
+                    </p:column>
+
+                    <p:column style="width:4%">
+                        <p:commandButton ajax="true" id="selectButton" update=":display" oncomplete="rolDialog.show()" icon="ui-icon-pencil" title="Editar">
+                            <f:setPropertyActionListener value="#{rol}" target="#{rolMB.rolSeleccionado}" />
+                        </p:commandButton>
+                    </p:column>
+                    <p:column style="width:4%">
+                        <p:commandButton oncomplete="studentDialog.show()" icon="ui-icon-trash" update=":form:dlgConfirmacion">
+                            <f:setPropertyActionListener value="#{rol}" target="#{rolMB.rolSeleccionado}" />
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+                <p:dialog header="Student Detail" widgetVar="studentDialog" resizable="false" id="studentDlg"
+                          showEffect="fade" hideEffect="explode" modal="true">
+                    <h:panelGrid id="dlgConfirmacion" columns="2" cellpadding="4" style="margin:0 auto;">                                              
+                        <p:commandButton id="deleteButton" actionListener="#{rolMB.eliminarRol}" oncomplete="studentDialog.hide()" update=":form:tablaRoles" value="Delete"/>
+                        <p:commandButton id="cancelButton" onclick="studentDialog.hide()" value="Cancel"/>
+                    </h:panelGrid>
+                </p:dialog>
+            </h:form>
+            <p:dialog header="Detalle de Rol" widgetVar="rolDialog" resizable="false" showEffect="fade" hideEffect="explode" modal="true">
+                <h:form id="display">
+                    <h:panelGrid  columns="2" cellpadding="4" style="margin:0 auto;">
+                        <h:outputText value="Código" />
+                        <h:inputText value="#{rolMB.rolSeleccionado.rolCodigo}" />
+                        <h:outputText value="Descripción" />
+                        <h:inputText value="#{rolMB.rolSeleccionado.rolDescripcion}" />
+                        <p:commandButton value="Guardar" actionListener="#{rolMB.editarRol}" update=":form:tablaRoles">
+                        </p:commandButton>
+                        <p:commandButton value="Cancelar">
+                        </p:commandButton>
+                    </h:panelGrid>
+                </h:form>
+            </p:dialog>
+
+        </h:body>
+    </f:view>
+</html>

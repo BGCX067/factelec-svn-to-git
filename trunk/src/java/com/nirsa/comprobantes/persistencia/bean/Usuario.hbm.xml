@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 29-may-2013 12:11:16 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.nirsa.comprobantes.persistencia.bean.Usuario" table="usuario" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="sequence">
+                <param name="sequence">usuario_id_seq</param>
+            </generator>
+        </id>
+        <many-to-one name="rol" class="com.nirsa.comprobantes.persistencia.bean.Rol" fetch="select">
+            <column name="id_rol" not-null="true" />
+        </many-to-one>
+        <many-to-one name="emisor" class="com.nirsa.comprobantes.persistencia.bean.Emisor" fetch="select">
+            <column name="id_emisor" not-null="true" />
+        </many-to-one>
+        <property name="usuarioNombre" type="string">
+            <column name="usuario_nombre" />
+        </property>
+        <property name="usuarioNombreReal" type="string">
+            <column name="usuario_nombre_real" />
+        </property>
+        <property name="usuarioApellidoReal" type="string">
+            <column name="usuario_apellido_real" />
+        </property>
+        <property name="usuarioPassword" type="string">
+            <column name="usuario_password" />
+        </property>
+        <property name="usuarioNuevaPassword" type="string">
+            <column name="usuario_nueva_password" />
+        </property>
+        <property name="usuarioEmail" type="string">
+            <column name="usuario_email" />
+        </property>
+        <property name="usuarioFechaCreacion" type="date">
+            <column name="usuario_fecha_creacion" length="13" />
+        </property>
+        <property name="usuarioFechaModificacion" type="date">
+            <column name="usuario_fecha_modificacion" length="13" />
+        </property>
+        <property name="usuarioEstaActivo" type="java.lang.Character">
+            <column name="usuario_esta_activo" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

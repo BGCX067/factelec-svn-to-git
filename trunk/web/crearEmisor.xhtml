@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view>
+        <h:head>
+            <title></title>
+        </h:head>
+        <h:body>
+            <h:form>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel for="ruc" value="R.U.C:" style="font-weight:bold"/>
+                    <p:inputText id="ruc" value="#{emisorMB.ruc}" />
+                    
+                    <h:outputLabel for="razonsocial" value="Razón Social:" style="font-weight:bold"/>
+                    <p:inputText id="razonsocial" value="#{emisorMB.razonSocial}" />
+                    
+                    <h:outputLabel for="nombrecomercial" value="Nombre Comercial" style="font-weight:bold"/>
+                    <p:inputText id="nombrecomercial" value="#{emisorMB.nombreComercial}" />
+                    
+                    <h:outputLabel for="direccionmatriz" value="Dirección de matriz:" style="font-weight:bold"/>
+                    <p:inputText id="direccionmatriz" value="#{emisorMB.direccionMatriz}" />
+                    
+                    <h:outputLabel for="direccionestablecimiento" value="Dirección de establecimiento:" style="font-weight:bold"/>
+                    <p:inputText id="direccionestablecimiento" value="#{emisorMB.direccionEstablecimiento}" />
+                    
+                    <h:outputLabel for="nroresolucion" value="Número de resolución:" style="font-weight:bold"/>
+                    <p:inputText id="nroresolucion" value="#{emisorMB.numeroResolucionContribuyenteEspecial}" />
+                    
+                    <h:outputLabel for="rutalogo" value="Logo:" style="font-weight:bold"/>
+                    <p:inputText id="rutalogo" value="#{emisorMB.rutaRutaLogo}" />
+                    
+                    <h:outputLabel for="tiempoespera" value="Tiempo de espera:" style="font-weight:bold"/>
+                    <p:spinner id="tiempoespera" value="#{emisorMB.tiempoEspera}" min="0" max="100"/> 
+                    <h:outputLabel for="rutafirmadigital" value="Firma digital:" style="font-weight:bold"/>
+                    <p:inputText id="rutafirmadigital" value="#{emisorMB.rutaFirmaDigital}" />
+                    
+                    <p:commandButton value="Guardar" actionListener="#{emisorMB.guardarEmisor}" ajax="false" />
+                </h:panelGrid>
+            </h:form>
+        </h:body>
+    </f:view>
+</html>
+

@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 29-may-2013 12:11:16 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.nirsa.comprobantes.persistencia.bean.Emisor" table="emisor" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="sequence">
+                <param name="sequence">emisor_id_seq</param>
+            </generator>
+        </id>
+        <property name="emisorRuc" type="string">
+            <column name="emisor_ruc" />
+        </property>
+        <property name="emisorRazonSocial" type="string">
+            <column name="emisor_razon_social" />
+        </property>
+        <property name="emisorNombreComercial" type="string">
+            <column name="emisor_nombre_comercial" />
+        </property>
+        <property name="emisorDireccionMatriz" type="string">
+            <column name="emisor_direccion_matriz" />
+        </property>
+        <property name="emisorDireccionEstablecimiento" type="string">
+            <column name="emisor_direccion_establecimiento" />
+        </property>
+        <property name="emisorNumeroResolucionContribuyenteEspecial" type="string">
+            <column name="emisor_numero_resolucion_contribuyente_especial" />
+        </property>
+        <property name="emisorObligadoLlevarContabilidad" type="string">
+            <column name="emisor_obligado_llevar_contabilidad" />
+        </property>
+        <property name="emisorLogo" type="binary">
+            <column name="emisor_logo" />
+        </property>
+        <property name="emisorTiempoEspera" type="java.lang.Integer">
+            <column name="emisor_tiempo_espera" />
+        </property>
+        <property name="emisorRutaFirmaDigital" type="string">
+            <column name="emisor_ruta_firma_digital" />
+        </property>
+        <property name="emisorFechaCreacion" type="date">
+            <column name="emisor_fecha_creacion" length="13" />
+        </property>
+        <property name="emisorFechaModificacion" type="date">
+            <column name="emisor_fecha_modificacion" length="13" />
+        </property>
+        <property name="emisorEstaActivo" type="java.lang.Character">
+            <column name="emisor_esta_activo" length="1" />
+        </property>
+        <set name="usuarios" inverse="true">
+            <key>
+                <column name="id_emisor" not-null="true" />
+            </key>
+            <one-to-many class="com.nirsa.comprobantes.persistencia.bean.Usuario" />
+        </set>
+    </class>
+</hibernate-mapping>

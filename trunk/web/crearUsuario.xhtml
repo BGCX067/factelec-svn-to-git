@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view>
+        <h:head>
+            <title></title>
+        </h:head>
+        <h:body>
+            <h:form>
+                <p:messages id="messages" showDetail="true" autoUpdate="true" />
+                <h:panelGrid columns="2" cellpadding="2">
+                    <h:outputLabel for="nombres" value="Nombres:" style="font-weight:bold"/>
+                    <p:inputText id="nombres" value="#{usuarioMB.nombres}" />
+                    <h:outputLabel for="apellidos" value="Apellidos:" style="font-weight:bold"/>
+                    <p:inputText id="apellidos" value="#{usuarioMB.apellidos}" />
+                    <h:outputLabel for="username" value="Nombre de usuario:" style="font-weight:bold"/>
+                    <p:inputText id="username" value="#{usuarioMB.nombreUsuario}" />
+                    <h:outputLabel for="pwd1" value="Contraseña" />
+                    <p:password id="pwd1" value="#{usuarioMB.claveUsuario}" match="pwd2" label="Contraseña" required="true"/>
+                    <h:outputLabel for="pwd2" value="Repita la contraseña" />
+                    <p:password id="repassword" value="#{usuarioMB.claveUsuarioRepetida}" />
+                    
+                    <h:outputLabel for="email" value="Correo electrónico:" style="font-weight:bold"/>
+                    <p:inputText id="email" value="#{usuarioMB.correoElectrónico}" />
+                    <h:outputLabel for="rol" value="Rol:" style="font-weight:bold"/>
+                    <h:selectOneMenu id="roles" value="#{usuarioMB.rolSeleccionado}" required="true">  
+                        <f:selectItem itemLabel="" itemValue="" />  
+                        <f:selectItems value="#{usuarioMB.listaRoles}" />  
+                    </h:selectOneMenu> 
+                    <h:outputLabel for="emisor" value="Emisor:" style="font-weight:bold"/>
+                    <h:selectOneMenu id="emisores" value="#{usuarioMB.emisorSeleccionado}" required="true">  
+                        <f:selectItem itemLabel="" itemValue="" />  
+                        <f:selectItems value="#{usuarioMB.listaEmisores}" />  
+                    </h:selectOneMenu> 
+                    <p:commandButton value="Guardar" actionListener="#{rolMB.guardarRol}" ajax="false" />
+                </h:panelGrid>
+            </h:form>
+        </h:body>
+    </f:view>
+</html>

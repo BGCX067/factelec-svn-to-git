@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view>
+        <h:head>
+            <title></title>
+        </h:head>
+        <h:body>
+            <h:form>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel for="codigo" value="Código:" style="font-weight:bold"/>
+                    <p:inputText id="codigo" value="#{rolMB.codigo}" />
+                    <h:outputLabel for="descripcion" value="Descripción:" style="font-weight:bold"/>
+                    <p:inputText id="descripcion" value="#{rolMB.descripcion}" />
+                    <p:commandButton value="Guardar" actionListener="#{rolMB.guardarRol}" ajax="false" />
+                </h:panelGrid>
+            </h:form>
+        </h:body>
+    </f:view>
+</html>
